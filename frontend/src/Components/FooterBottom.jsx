@@ -1,35 +1,40 @@
+import React from "react";
+import { Navbar, Nav, Container, NavDropdown, Badge } from "react-bootstrap";
+
 const FooterBottom = () => {
   return (
-    <div className="container text-white d-md-flex py-4">
-      <div className="me-md-auto text-center text-md-start">
-        <div className="copyright">
-          <p>Femi Adesola &copy; {new Date().getFullYear()}</p>
-          <strong>
-            <span> All Rights Reserved</span>
-          </strong>
-        </div>
-      </div>
-      <div className="social-links text-center text-md-end pt-3 pt-md-0">
-        <a
-          className="linkedin"
-          href="https://www.linkedin.com/in/femi-adesola-oyinloye-106454145/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <i className="fa fa-linkedin"></i>
-        </a>
-        <a
-          className="github"
-          href="https://github.com/FemiAdesola"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <i className="fa fa-github"></i>
-        </a>
-        <a className="facebook" href="/" target="_blank" rel="noreferrer">
-          <i className="bi bi-facebook"></i>
-        </a>
-      </div>
+    <div>
+      <Navbar bg="primary" variant="dark" expand="lg" collapseOnSelect>
+        <Container>
+          <Navbar.Brand href="/">
+            <div className="copyright">
+              <p>
+                Femi Adesola &copy; {new Date().getFullYear()}{" "}
+                <strong>
+                  <span> All Rights Reserved</span>{" "}
+                </strong>{" "}
+              </p>{" "}
+            </div>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ms-auto">
+              <Nav.Link
+                href="https://www.linkedin.com/in/femi-adesola-oyinloye-106454145/"
+                target="_blank"
+              >
+                <i className="fab fa-linkedin fa-2x"></i>
+              </Nav.Link>
+              <Nav.Link href="https://github.com/FemiAdesola" target="_blank">
+                <i className="fab fa-github fa-2x"></i>
+              </Nav.Link>
+              <Nav.Link href="/" target="_blank">
+                <i className="fab fa-facebook fa-2x"></i>
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </div>
   );
 };
