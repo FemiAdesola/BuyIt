@@ -204,3 +204,8 @@ table th {
   color: #fff;
   text-decoration: none; */
 }
+
+.productcard img{
+  width: 100%;
+  height: 200px;
+}

@@ -21,8 +21,8 @@ const products = [
     productType: "Science Book",
     image: "https://source.unsplash.com/9DaOYUYnOls",
     countInStock: 10,
-    rating: 4.5,
-    numReviews: 12,
+    rating: 4,
+    numReviews: 15,
   },
   {
     _id: 3,
@@ -34,7 +34,7 @@ const products = [
     productType: "Laptop",
     image: "https://source.unsplash.com/1SAnrIxw5OY",
     countInStock: 10,
-    rating: 4.5,
+    rating: 3.5,
     numReviews: 12,
   },
   {
@@ -47,7 +47,7 @@ const products = [
     productType: "Dinning Chair",
     image: "https://source.unsplash.com/3neSwyntbQ8",
     countInStock: 10,
-    rating: 4.5,
+    rating: 2.5,
     numReviews: 12,
   },
 
@@ -60,7 +60,7 @@ const products = [
     productType: "Shirt",
     image: "https://source.unsplash.com/ojZ4wJNUM5w",
     countInStock: 10,
-    rating: 4.5,
+    rating: 3,
     numReviews: 12,
   },
   {
@@ -72,7 +72,7 @@ const products = [
     productType: "Car",
     image: "https://source.unsplash.com/50cIn5ELxLo",
     countInStock: 10,
-    rating: 4.5,
+    rating: 5,
     numReviews: 12,
   },
 
@@ -99,7 +99,7 @@ const products = [
     image: "https://source.unsplash.com/tG36rvCeqng",
     countInStock: 4,
     rating: 4.5,
-    numReviews: 12,
+    numReviews: 10,
   },
 
   {
@@ -113,7 +113,7 @@ const products = [
     image: "https://source.unsplash.com/F39Yk-FM_fg",
     countInStock: 10,
     rating: 4.5,
-    numReviews: 12,
+    numReviews: 7,
   },
   {
     _id: 10,
@@ -125,7 +125,7 @@ const products = [
     image: "https://source.unsplash.com/xsGxhtAsfSA",
     countInStock: 5,
     rating: 4.5,
-    numReviews: 12,
+    numReviews: 9,
   },
   {
     _id: 11,
