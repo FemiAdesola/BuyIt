@@ -1,10 +1,11 @@
 import express from 'express';
 import dotenv from "dotenv";
 dotenv.config();
-
+import connectDB from './database/db.js';
 import products from "./data/products.js"
 
 const port = process.env.PORT || 4000;
+connectDB(); // way to connect to database with mongoose connection
 
 const app = express();
 
