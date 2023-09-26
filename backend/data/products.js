@@ -1,6 +1,5 @@
 const products = [
   {
-    _id: 1,
     title: "Adidas shoe",
     price: 200.99,
     description: "AMen's Daily 3.0 Skate Shoe",
@@ -12,7 +11,6 @@ const products = [
     numReviews: 17,
   },
   {
-    _id: 2,
     title: "Math text book",
     price: 299.99,
     description:
@@ -25,7 +23,6 @@ const products = [
     numReviews: 15,
   },
   {
-    _id: 3,
     title: "Macbook pro 16",
     price: 2145,
     description:
@@ -38,7 +35,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: 4,
     title: "Plastic chair",
     price: 49.99,
     description:
@@ -50,9 +46,7 @@ const products = [
     rating: 2.5,
     numReviews: 12,
   },
-
   {
-    _id: 5,
     title: "T-shirt",
     price: 80.99,
     description: "Gildan Men's Crew T-Shirts, Multipack, Style G1100",
@@ -64,7 +58,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: 6,
     title: "Toyota CHR",
     price: 30000,
     description: "Gildan Men's Crew T-Shirts, Multipack, Style G1100",
@@ -75,9 +68,7 @@ const products = [
     rating: 5,
     numReviews: 12,
   },
-
   {
-    _id: 7,
     title: "Leather bag",
     price: 78.98,
     description:
@@ -90,7 +81,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: 8,
     title: "Motorcycle 2006",
     price: 799.99,
     description: "New-Ray 1:12 Motorcycle 2006 Kawasaki Zx-10R- Sport Bike",
@@ -101,9 +91,7 @@ const products = [
     rating: 4.5,
     numReviews: 10,
   },
-
   {
-    _id: 9,
     title: "Body lotion(vaseline)",
     price: 30.23,
     description:
@@ -116,7 +104,6 @@ const products = [
     numReviews: 7,
   },
   {
-    _id: 10,
     title: "Iphone 13 Pro Max",
     price: 1200.99,
     description: "iPhone 13 Pro Max, 128GB, Sierra Blue - Unlocked",
@@ -128,7 +115,6 @@ const products = [
     numReviews: 9,
   },
   {
-    _id: 11,
     title: "Toyota CHR",
     price: 56000,
     description:
@@ -141,7 +127,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: 12,
     title: "Ferragamo BOXYZ bag",
     price: 78.98,
     description:
@@ -154,7 +139,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: 13,
     title: "Zero to One",
     price: 799.99,
     description:
