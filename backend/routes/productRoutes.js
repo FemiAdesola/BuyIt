@@ -5,7 +5,6 @@ import Product from "../models/productModel.js"
 import asynchronousHandler from "../middleware/asynchronousHandler.js";
 // import products from "../data/products.js";
 
-
 router.get('/', asynchronousHandler(async (req, res) => {
     const products = await Product.find({})
   res.json(products);
