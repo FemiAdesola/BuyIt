@@ -5,6 +5,7 @@ import { useGetAllProductsQuery } from "../Redux/slice/productsApiSlice.js";
 import Loader from "../Components/Loader";
 import Message from "../Components/Message";
 
+
 const HomeScreen = () => {
   const { data: products, isLoading, error } = useGetAllProductsQuery();
   return (
