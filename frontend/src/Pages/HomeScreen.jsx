@@ -2,15 +2,17 @@ import { Row, Col } from "react-bootstrap";
 // import products from '../products';
 import ProductCard from "../Components/Product/ProductCard";
 import { useGetAllProductsQuery } from "../Redux/slice/productsApiSlice.js";
+import Loader from "../Components/Loader";
+import Message from "../Components/Message";
 
 const HomeScreen = () => {
   const { data: products, isLoading, error } = useGetAllProductsQuery();
   return (
     <>
       {isLoading ? (
-        <h3>Loading...</h3>
+        <Loader />
       ) : error ? (
-        <div>{error?.data?.message || error.error}</div>
+        <Message variant='danger'>{error?.data?.message || error.error}</Message>
       ) : (
         <>
           <h1>Latest Products</h1>

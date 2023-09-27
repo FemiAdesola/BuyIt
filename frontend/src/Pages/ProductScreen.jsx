@@ -5,6 +5,8 @@ import {
 
 import ProductRating from '../Components/Product/ProductRating';
 import { useGetProductDetailsQuery } from "../Redux/slice/productsApiSlice";
+import Loader from "../Components/Loader";
+import Message from "../Components/Message";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -16,9 +18,11 @@ const ProductScreen = () => {
   return (
     <>
       {isLoading ? (
-        <h3>Loading...</h3>
+        <Loader />
       ) : error ? (
-        <div>{error?.data?.message || error.error}</div>
+        <Message variant="danger">
+          {error?.data?.message || error.error}
+        </Message>
       ) : (
         <>
           <Link className="btn btn-light my-3" to="/">
