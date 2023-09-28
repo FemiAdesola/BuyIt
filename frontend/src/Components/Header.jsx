@@ -8,6 +8,7 @@ import logo from "../Assets/logo.png";
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
+  const { userData } = useSelector((state) => state.auth);
 
   return (
     <header>
@@ -36,11 +37,24 @@ const Header = () => {
                   )}
                 </Nav.Link>
               </LinkContainer>
+              {userData ? (
+                <>
+                  <NavDropdown title={userData.name} id='username'>
+                    <LinkContainer to='/profile'>
+                      <NavDropdown.Item>Profile</NavDropdown.Item>
+                    </LinkContainer>
+                    <NavDropdown.Item >
+                      Logout
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                </>
+                ) : (
               <LinkContainer to="/login">
                 <Nav.Link>
                   <FaUser /> Sign In
                 </Nav.Link>
               </LinkContainer>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
