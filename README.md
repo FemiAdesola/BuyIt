@@ -21,6 +21,7 @@
     + Mongoose
     + dotenv
     + bcryptjs
+    + jsonwebtoken
 - Frontend
     + RectJS
     + React-bootstrap(for design and styling)
