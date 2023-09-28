@@ -6,7 +6,7 @@ const initialState = {
       : null,
   };
 
-
+// These are for local stuff
   const authSlice = createSlice({
     name: 'auth',
     initialState,
@@ -18,9 +18,13 @@ const initialState = {
             const expirationTime = new Date().getTime() + 20 * 24 * 60 * 60 * 1000; // 20 days
             localStorage.setItem('expirationTime', expirationTime);
           },
+          logout: (state, action) => {
+            state.userData = null;
+            localStorage.clear();
+          },
     },
 
   });
 
-  export const { setCredentials} = authSlice.actions;
+  export const { setCredentials,logout } = authSlice.actions;
   export default authSlice.reducer;
