@@ -10,7 +10,7 @@ import { useCreateOrderMutation } from "../Redux/slice/orderApiSlice";
 import CheckoutSteps from "../Components/CheckoutSteps";
 import { clearCartItems } from "../Redux/slice/cartSlice";
 
-export const PlaceOrderScreen = () => {
+const PlaceOrderScreen = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -154,3 +154,5 @@ export const PlaceOrderScreen = () => {
     </>
   );
 };
+
+export default PlaceOrderScreen
