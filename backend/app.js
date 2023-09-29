@@ -30,6 +30,11 @@ app.use("/api/v1/products", productRoutes);
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/orders", orderRoutes);
 
+// For paypal routes
+app.get('/api/v1/config/paypal', (req, res) =>
+  res.send({ clientId: process.env.PAYPAL_CLIENT_ID })
+);
+
 app.use(notFoundHandler);
 app.use(errorHandler);
 
