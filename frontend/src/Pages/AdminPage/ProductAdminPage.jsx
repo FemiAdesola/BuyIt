@@ -10,6 +10,7 @@ import Loader from "../../Components/Loader";
 import {
   useGetAllProductsQuery,
   useCreateProductMutation,
+  useDeleteProductMutation,
 } from "../../Redux/slice/productsApiSlice";
 
 const ProductAdminPage = () => {
@@ -23,9 +24,15 @@ const ProductAdminPage = () => {
   const [createProduct, { isLoading: loadingCreate }] =
     useCreateProductMutation();
 
+  const [deleteProduct, { isLoading: loadingDelete }] =
+    useDeleteProductMutation();
+
+  // For deleting the products
   const deleteProductHandler = async (id) => {
     if (window.confirm("Are you sure")) {
       try {
+        await deleteProduct(id);
+        toast.success("Product deleted successfully");
         refetch();
       } catch (error) {
         toast.error(error?.data?.message || error.error);
@@ -57,7 +64,10 @@ const ProductAdminPage = () => {
           </Button>
         </Col>
       </Row>
+      
       {loadingCreate && <Loader />}
+      {loadingDelete && <Loader />}
+
       {isLoading ? (
         <Loader />
       ) : error ? (
