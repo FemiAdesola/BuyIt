@@ -1,3 +1,4 @@
+import path from 'path';
 import express from 'express';
 import dotenv from "dotenv";
 dotenv.config();
@@ -8,6 +9,8 @@ import productRoutes from "./routes/productRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import { notFoundHandler, errorHandler } from "./middleware/errorHandler.js";
+
+import uploadRoutes from './routes/uploadRoutes.js';
 
 const port = process.env.PORT || 4000;
 connectDB(); // way to connect to database with mongoose connection
@@ -29,6 +32,12 @@ app.get("/", (req, res) => {
 app.use("/api/v1/products", productRoutes);
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/orders", orderRoutes);
+
+// for uploading image
+app.use("/api/v1/upload", uploadRoutes);
+const __dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+//
 
 // For paypal routes
 app.get('/api/v1/config/paypal', (req, res) =>
