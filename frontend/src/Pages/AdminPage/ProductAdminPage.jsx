@@ -1,50 +1,71 @@
-import React from 'react'
-import { LinkContainer } from 'react-router-bootstrap';
-import { Table, Button, Row, Col } from 'react-bootstrap';
-import { FaEdit, FaPlus, FaTrash } from 'react-icons/fa';
-import { useParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import React from "react";
+import { LinkContainer } from "react-router-bootstrap";
+import { Table, Button, Row, Col } from "react-bootstrap";
+import { FaEdit, FaPlus, FaTrash } from "react-icons/fa";
+import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import Message from "../../Components/Message";
 import Loader from "../../Components/Loader";
-import { useGetAllProductsQuery, } from '../../Redux/slice/productsApiSlice';
-
+import {
+  useGetAllProductsQuery,
+  useCreateProductMutation,
+} from "../../Redux/slice/productsApiSlice";
 
 const ProductAdminPage = () => {
+  const {
+    data: products,
+    isLoading,
+    error,
+    refetch,
+  } = useGetAllProductsQuery();
 
-    const { data:products, isLoading, error, refetch } = useGetAllProductsQuery();
-    
+  const [createProduct, { isLoading: loadingCreate }] =
+    useCreateProductMutation();
 
-    const deleteProductHandler = async(id) => {
-        if (window.confirm('Are you sure')) {
-            try {
-              refetch();
-            } catch (error) {
-              toast.error(error?.data?.message || error.error);
-            }
-          }
+  const deleteProductHandler = async (id) => {
+    if (window.confirm("Are you sure")) {
+      try {
+        refetch();
+      } catch (error) {
+        toast.error(error?.data?.message || error.error);
+      }
     }
-     
+  };
+
+  // for creating a new product
+  const createProductHandler = async () => {
+    if (window.confirm("Are you sure you want to create a new product?")) {
+      try {
+        await createProduct();
+        refetch();
+      } catch (error) {
+        toast.error(error?.data?.message || error.error);
+      }
+    }
+  };
+
   return (
     <>
-      <Row className='align-items-center'>
-      <Col>
+      <Row className="align-items-center">
+        <Col>
           <h1>Products</h1>
         </Col>
-        <Col className='text-end'>
-          <Button className='btn-sm m-3'>
+        <Col className="text-end">
+          <Button className="btn-sm m-3" onClick={() => createProductHandler()}>
             <FaPlus /> Create New Product
           </Button>
         </Col>
-      </Row> 
+      </Row>
+      {loadingCreate && <Loader />}
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <Message variant='danger'>{error.data.message}</Message>
+        <Message variant="danger">{error.data.message}</Message>
       ) : (
         <>
-        <Table striped bordered hover responsive className='table-sm'>
-        <thead>
+          <Table striped bordered hover responsive className="table-sm">
+            <thead>
               <tr>
                 <th>ID</th>
                 <th>TITLE</th>
@@ -55,7 +76,7 @@ const ProductAdminPage = () => {
               </tr>
             </thead>
             <tbody>
-            {products.map((product) => (
+              {products.map((product) => (
                 <tr key={product._id}>
                   <td>{product._id}</td>
                   <td>{product.title}</td>
@@ -64,26 +85,26 @@ const ProductAdminPage = () => {
                   <td>{product.productType}</td>
                   <td>
                     <LinkContainer to={`/admin/product/${product._id}/edit`}>
-                      <Button variant='light' className='btn-sm mx-2'>
+                      <Button variant="light" className="btn-sm mx-2">
                         <FaEdit />
                       </Button>
                     </LinkContainer>
                     <Button
-                      variant='danger'
-                      className='btn-sm'
+                      variant="danger"
+                      className="btn-sm"
                       onClick={() => deleteProductHandler(product._id)}
                     >
-                      <FaTrash style={{ color: 'white' }} />
+                      <FaTrash style={{ color: "white" }} />
                     </Button>
                   </td>
                 </tr>
               ))}
             </tbody>
-        </Table>
+          </Table>
         </>
-        )}
+      )}
     </>
-  )
-}
+  );
+};
 
-export default ProductAdminPage
+export default ProductAdminPage;
