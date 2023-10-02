@@ -9,7 +9,7 @@ import {
   Button,
   Form,
 } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 
 import ProductRating from "../Components/Product/ProductRating";
 import { useGetProductDetailsQuery } from "../Redux/slice/productsApiSlice";
