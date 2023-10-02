@@ -3,13 +3,13 @@ import { Link, useParams } from "react-router-dom";
 import { Row, Col, ListGroup, Image, Card, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
+import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 
 import Message from "../Components/Message";
 import Loader from "../Components/Loader";
-import { 
-  useGetOrderDetailsQuery 
-  ,usePayOrderMutation,
+import {
+  useGetOrderDetailsQuery,
+  usePayOrderMutation,
   useGetPaypalClientIdQuery,
 } from "../Redux/slice/orderApiSlice";
 
@@ -35,13 +35,13 @@ const OrderScreen = () => {
       const loadPaypalScript = async () => {
         // from paypal documentation
         paypalDispatch({
-          type: 'resetOptions',
+          type: "resetOptions",
           value: {
-            'client-id': paypal.clientId,
-            currency: 'USD',
+            "client-id": paypal.clientId,
+            currency: "USD",
           },
         });
-        paypalDispatch({ type: 'setLoadingStatus', value: 'pending' });
+        paypalDispatch({ type: "setLoadingStatus", value: "pending" });
       };
       if (order && !order.isPaid) {
         if (!window.paypal) {
@@ -52,18 +52,17 @@ const OrderScreen = () => {
   }, [errorPayPal, loadingPayPalClient, order, paypal, paypalDispatch]);
 
   async function onApproveTest() {
-    await payOrder({ orderId, details:{payer:{}} });
+    await payOrder({ orderId, details: { payer: {} } });
     refetch();
-    toast.success('Order is paid');
+    toast.success("Order is paid");
   }
-
 
   function onApprove(data, actions) {
     return actions.order.capture().then(async function (details) {
       try {
         await payOrder({ orderId, details });
         refetch();
-        toast.success('Order is paid');
+        toast.success("Order is paid");
       } catch (error) {
         toast.error(error?.data?.message || error.error);
       }
@@ -94,6 +93,9 @@ const OrderScreen = () => {
     <Message variant="danger">{error.data.message}</Message>
   ) : (
     <>
+      <Link className="btn btn-light my-3" to="/profile">
+        Go Back to Profile
+      </Link>
       <h1>Order {order._id}</h1>
       <Row>
         <Col md={8}>
@@ -109,8 +111,7 @@ const OrderScreen = () => {
               </p>
               <p>
                 <strong>Address: </strong>
-                {order.shippingAddress.address}, {" "}
-                {order.shippingAddress.city}{" "}
+                {order.shippingAddress.address}, {order.shippingAddress.city}{" "}
                 {order.shippingAddress.postalCode},{" "}
                 {order.shippingAddress.country}
               </p>
@@ -130,18 +131,18 @@ const OrderScreen = () => {
                 {order.paymentMethod}
               </p>
               {order.isPaid ? (
-                <Message variant='success'>Paid on {order.paidAt}</Message>
+                <Message variant="success">Paid on {order.paidAt}</Message>
               ) : (
-                <Message variant='danger'>Not Paid</Message>
+                <Message variant="danger">Not Paid</Message>
               )}
             </ListGroup.Item>
 
             <ListGroup.Item>
-            <h2>Order Items</h2>
-            {order.orderItems.length === 0 ? (
+              <h2>Order Items</h2>
+              {order.orderItems.length === 0 ? (
                 <Message>Order is empty</Message>
               ) : (
-                <ListGroup variant='flush'>
+                <ListGroup variant="flush">
                   {order.orderItems.map((item, index) => (
                     <ListGroup.Item key={index}>
                       <Row>
@@ -159,7 +160,8 @@ const OrderScreen = () => {
                           </Link>
                         </Col>
                         <Col md={4}>
-                          {item.quantity} x €{item.price} = €{item.quantity * item.price}
+                          {item.quantity} x €{item.price} = €
+                          {item.quantity * item.price}
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -172,7 +174,7 @@ const OrderScreen = () => {
         <Col md={4}>
           <Card>
             <ListGroup variant="flush">
-            <ListGroup.Item>
+              <ListGroup.Item>
                 <h2>Order Summary</h2>
               </ListGroup.Item>
               <ListGroup.Item>
@@ -209,7 +211,7 @@ const OrderScreen = () => {
                     <div>
                       {/* THIS BUTTON IS FOR TESTING! REMOVE BEFORE PRODUCTION! */}
                       <Button
-                        style={{ marginBottom: '10px' }}
+                        style={{ marginBottom: "10px" }}
                         onClick={onApproveTest}
                       >
                         Test Pay Order
