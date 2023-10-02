@@ -93,9 +93,17 @@ const OrderScreen = () => {
     <Message variant="danger">{error.data.message}</Message>
   ) : (
     <>
-      <Link className="btn btn-light my-3" to="/profile">
+     {userData && userData.isAdmin ? (
+      <Link className="btn btn-light my-3" to="/admin/orderlist">
         Go Back to Profile
       </Link>
+      ):(
+        <>
+        <Link className="btn btn-light my-3" to="/profile">
+        Go Back to Profile
+      </Link>
+      </>
+      )}
       <h1>Order {order._id}</h1>
       <Row>
         <Col md={8}>
