@@ -9,6 +9,7 @@ import FormContainer from "../../Components/FormContainer";
 import {
   useUpdateProductMutation,
   useGetProductDetailsQuery,
+  useUploadProductImageMutation
 } from "../../Redux/slice/productsApiSlice";
 
 const EditProductByAdminPage = () => {
@@ -32,6 +33,9 @@ const EditProductByAdminPage = () => {
 
   const [updateProduct, { isLoading: loadingUpdate }] =
     useUpdateProductMutation();
+
+    const [uploadProductImage, { isLoading: loadingUpload }] =
+    useUploadProductImageMutation();
 
   useEffect(() => {
     if (product) {
@@ -66,6 +70,20 @@ const EditProductByAdminPage = () => {
     }
   };
   
+  // For uploading image 
+  const uploadFileImageHandler = async (e) => {
+    const formData = new FormData();
+    formData.append('image', e.target.files[0]);
+    try {
+      const res = await uploadProductImage(formData).unwrap();
+      toast.success(res.message);
+      setImage(res.image);
+    } catch (error) {
+      toast.error(error?.data?.message || error.error);
+    }
+  }
+  //
+
   return (
     <>
       <Link to="/admin/productlist" className="btn btn-light my-3">
@@ -115,7 +133,9 @@ const EditProductByAdminPage = () => {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
-              <Form.Control label="Choose File" type="file"></Form.Control>
+              <Form.Control label="Choose File" type="file"
+              onChange={uploadFileImageHandler}></Form.Control>
+               {loadingUpload && <Loader />}
             </Form.Group>
 
             <Form.Group controlId="category" className="mt-3">
