@@ -27,6 +27,7 @@ import OrderScreen from "./Pages/OrderScreen";
 import ProfileScreen from "./Pages/ProfileScreen";
 import AdminRoute from "./Components/AdminRoute";
 import { OrderAdminPage } from "./Pages/AdminPage/OrderAdminPage";
+import ProductAdminPage from "./Pages/AdminPage/ProductAdminPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -47,6 +48,7 @@ const router = createBrowserRouter(
 
       <Route path="" element={<AdminRoute />}>
         <Route path="/admin/orderlist" element={<OrderAdminPage />} />
+        <Route path="/admin/productlist" element={<ProductAdminPage />} />
       </Route>
     </Route>
   )
