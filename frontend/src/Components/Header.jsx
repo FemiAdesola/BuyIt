@@ -21,7 +21,7 @@ const Header = () => {
     try {
       await logoutMutation().unwrap();
       dispatch(logout());
-      navigate('/login');
+      navigate("/login");
     } catch (error) {
       console.error(error);
     }
@@ -56,8 +56,8 @@ const Header = () => {
               </LinkContainer>
               {userData ? (
                 <>
-                  <NavDropdown title={userData.name} id='username'>
-                    <LinkContainer to='/profile'>
+                  <NavDropdown title={userData.name} id="username">
+                    <LinkContainer to="/profile">
                       <NavDropdown.Item>Profile</NavDropdown.Item>
                     </LinkContainer>
                     <NavDropdown.Item onClick={logoutHandler}>
@@ -65,12 +65,26 @@ const Header = () => {
                     </NavDropdown.Item>
                   </NavDropdown>
                 </>
-                ) : (
-              <LinkContainer to="/login">
-                <Nav.Link>
-                  <FaUser /> Sign In
-                </Nav.Link>
-              </LinkContainer>
+              ) : (
+                <LinkContainer to="/login">
+                  <Nav.Link>
+                    <FaUser /> Sign In
+                  </Nav.Link>
+                </LinkContainer>
+              )}
+              {/* for admin page  */}
+              {userData && userData.isAdmin && (
+                <NavDropdown title="Admin" id="adminmenu">
+                  <LinkContainer to="/admin/orderlist">
+                    <NavDropdown.Item>Orders</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/admin/productlist">
+                    <NavDropdown.Item>Products</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/admin/userlist">
+                    <NavDropdown.Item>Users</NavDropdown.Item>
+                  </LinkContainer>
+                </NavDropdown>
               )}
             </Nav>
           </Navbar.Collapse>
