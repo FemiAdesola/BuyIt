@@ -11,6 +11,7 @@ import {
   useGetOrderDetailsQuery,
   usePayOrderMutation,
   useGetPaypalClientIdQuery,
+  useDeliverOrderMutation
 } from "../Redux/slice/orderApiSlice";
 
 const OrderScreen = () => {
@@ -21,6 +22,10 @@ const OrderScreen = () => {
     isLoading,
     error,
   } = useGetOrderDetailsQuery(orderId);
+
+  const [deliverOrder, { isLoading: loadingDeliver }] =
+  useDeliverOrderMutation();
+
   const [payOrder, { isLoading: loadingPayPal }] = usePayOrderMutation();
   const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
   const { userData } = useSelector((state) => state.auth);
@@ -85,6 +90,17 @@ const OrderScreen = () => {
       .then((orderID) => {
         return orderID;
       });
+  }
+
+  // delivered status update for only admin 
+  const deliverOrderHandler = async () => {
+    try {
+      await deliverOrder(orderId);
+      refetch();
+      toast.success("Order is delivered");
+    } catch (error) {
+      toast.error(error?.data?.message || error.error);
+    }
   }
 
   return isLoading ? (
@@ -236,6 +252,23 @@ const OrderScreen = () => {
                   )}
                 </ListGroup.Item>
               )}
+              
+              {/* For delivering status updates */}
+              {loadingDeliver && <Loader />}
+              {userData &&
+                userData.isAdmin &&
+                order.isPaid &&
+                !order.isDelivered && (
+                  <ListGroup.Item>
+                    <Button
+                      type='button'
+                      className='btn btn-block'
+                      onClick={deliverOrderHandler}
+                    >
+                      Mark As Delivered
+                    </Button>
+                  </ListGroup.Item>
+                )}
             </ListGroup>
           </Card>
         </Col>

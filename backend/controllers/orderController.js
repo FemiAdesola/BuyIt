@@ -119,5 +119,4 @@ export {
   updateOrderToPaid,
   updateOrderToDelivered,
   getAllOrders,
-  updateOrderToDelivered
 };
