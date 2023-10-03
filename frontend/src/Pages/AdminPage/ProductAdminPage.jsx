@@ -3,6 +3,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { Table, Button, Row, Col } from "react-bootstrap";
 import { FaEdit, FaPlus, FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { useParams } from "react-router-dom";
 
 import Message from "../../Components/Message";
 import Loader from "../../Components/Loader";
@@ -11,14 +12,16 @@ import {
   useCreateProductMutation,
   useDeleteProductMutation,
 } from "../../Redux/slice/productsApiSlice";
+import PaginationComponent from "../../Components/PaginationComponent";
 
 const ProductAdminPage = () => {
+  const {pageNumber} = useParams();
   const {
-    data: products,
+    data,
     isLoading,
     error,
     refetch,
-  } = useGetAllProductsQuery();
+  } = useGetAllProductsQuery({pageNumber});
 
   const [createProduct, { isLoading: loadingCreate }] =
     useCreateProductMutation();
@@ -85,7 +88,7 @@ const ProductAdminPage = () => {
               </tr>
             </thead>
             <tbody>
-              {products.map((product) => (
+              {data.products.map((product) => (
                 <tr key={product._id}>
                   <td>{product._id}</td>
                   <td>{product.title}</td>
@@ -110,6 +113,11 @@ const ProductAdminPage = () => {
               ))}
             </tbody>
           </Table>
+          <PaginationComponent
+            pages={data.pages}
+            page={data.page}
+            isAdmin={true}
+          />
         </>
       )}
     </>

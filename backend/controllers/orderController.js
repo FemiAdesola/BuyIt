@@ -108,8 +108,18 @@ const updateOrderToDelivered = asynchronousHandler(async (req, res) => {
 // @route   GET /api/v1/orders
 // @access  Private/Admin
 const getAllOrders = asynchronousHandler(async (req, res) => {
-  const orders = await Order.find({}).populate("user", "id name");
-  res.status(200).json(orders);
+  // for pagination purposes
+  const pageSize = 3;
+  const page = Number(req.query.pageNumber) || 1;
+  const count = await Order.countDocuments();
+  
+  // const orders = await Order.find({}).populate("user", "id name");
+  // res.status(200).json(orders);
+  const orders = await Order.find({})
+  .limit(pageSize)
+  .skip(pageSize * (page - 1))
+  .populate("user", "id name");
+  res.json({ orders, page, pages: Math.ceil(count / pageSize) });
 });
 
 export {

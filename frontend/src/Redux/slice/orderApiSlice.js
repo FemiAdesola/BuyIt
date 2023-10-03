@@ -36,9 +36,11 @@ export const orderApiSlice = apiSlice.injectEndpoints({
       keepUnusedDataFor: 5,
     }),
     getAllOrders: builder.query({
-      query: () => ({
+      query: ({pageNumber}) => ({
         url: ORDERS_URL,
+        params: {pageNumber},
       }),
+      providesTags: ["Orders"],
       keepUnusedDataFor: 5,
     }),
     deliverOrder: builder.mutation({

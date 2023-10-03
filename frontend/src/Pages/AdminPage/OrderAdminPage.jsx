@@ -2,13 +2,16 @@ import React from 'react'
 import { LinkContainer } from 'react-router-bootstrap';
 import { Table, Button } from 'react-bootstrap';
 import { FaTimes } from 'react-icons/fa';
+import { useParams } from "react-router-dom";
 
 import Message from "../../Components/Message";
 import Loader from "../../Components/Loader";
 import { useGetAllOrdersQuery } from '../../Redux/slice/orderApiSlice';
+import PaginationComponent from '../../Components/PaginationComponent';
 
 export const OrderAdminPage = () => {
-    const { data: orders, isLoading, error } = useGetAllOrdersQuery();
+  const {pageNumber} = useParams();
+    const { data, isLoading, error } = useGetAllOrdersQuery({pageNumber});
     
   return (
     <>
@@ -33,7 +36,7 @@ export const OrderAdminPage = () => {
             </tr>
           </thead>
           <tbody>
-            {orders.map((order) => (
+            {data.orders.map((order) => (
               <tr key={order._id}>
                 <td>{order._id}</td>
                 <td>{order.user && order.user.name}</td>
@@ -65,6 +68,11 @@ export const OrderAdminPage = () => {
           </tbody>
         </Table>
       )}
+      <PaginationComponent
+            // pages={data.pages}
+            // page={data.page}
+            isAdmin={true}
+          />
     </>
   )
 }
