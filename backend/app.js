@@ -8,6 +8,7 @@ import connectDB from './database/db.js';
 import productRoutes from "./routes/productRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
+import reviewRoutes from "./routes/reviewRoutes.js";
 import { notFoundHandler, errorHandler } from "./middleware/errorHandler.js";
 
 import uploadRoutes from './routes/uploadRoutes.js';
@@ -32,6 +33,7 @@ app.get("/", (req, res) => {
 app.use("/api/v1/products", productRoutes);
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/orders", orderRoutes);
+app.use("/api/v1/products/:id/reviews", reviewRoutes);
 
 // for uploading image
 app.use("/api/v1/upload", uploadRoutes);
