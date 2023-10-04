@@ -18,6 +18,7 @@ import Loader from "../Components/Loader";
 import Message from "../Components/Message";
 import { addToCart } from "../Redux/slice/cartSlice";
 import { useCreateReviewMutation } from "../Redux/slice/reviewApiSlice";
+import Meta from "../Components/Meta";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -71,6 +72,7 @@ const ProductScreen = () => {
         </Message>
       ) : (
         <>
+        <Meta title={product.title}/>
           <Link className="btn btn-light my-3" to="/">
             Go Back
           </Link>

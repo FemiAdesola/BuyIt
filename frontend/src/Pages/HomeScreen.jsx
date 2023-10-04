@@ -8,6 +8,7 @@ import Loader from "../Components/Loader";
 import Message from "../Components/Message";
 import PaginationComponent from "../Components/PaginationComponent";
 import ProductCarousel from "../Components/Product/ProductCarousel";
+import Meta from "../Components/Meta";
 
 
 const HomeScreen = () => {
@@ -26,6 +27,7 @@ const HomeScreen = () => {
         <Message variant='danger'>{error?.data?.message || error.error}</Message>
       ) : (
         <>
+        <Meta title="Products"/>
           <h1>Latest Products</h1>
           <Row>
             {data.products.map((product) => (

@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from 'react-toastify';
 
 import Loader from "../Components/Loader";
-import Message from "../Components/Message"
 import FormContainer from "../Components/FormContainer";
 import {useLoginMutation} from "../Redux/slice/userApiSlice";
 import { setCredentials } from "../Redux/slice/authSlice";
