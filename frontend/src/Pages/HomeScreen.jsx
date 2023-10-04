@@ -10,8 +10,8 @@ import PaginationComponent from "../Components/PaginationComponent";
 
 
 const HomeScreen = () => {
-  const {pageNumber} = useParams();
-  const { data, isLoading, error } = useGetAllProductsQuery({pageNumber});
+  const {pageNumber, keyword} = useParams();
+  const { data, isLoading, error } = useGetAllProductsQuery({keyword, pageNumber});
   return (
     <>
       {isLoading ? (
@@ -31,6 +31,7 @@ const HomeScreen = () => {
           <PaginationComponent
             pages={data.pages}
             page={data.page}
+            keyword={ keyword ? keyword : ""}
           />
         </>
       )}

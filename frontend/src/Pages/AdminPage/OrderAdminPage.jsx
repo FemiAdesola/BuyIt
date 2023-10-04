@@ -23,6 +23,7 @@ export const OrderAdminPage = () => {
           {error?.data?.message || error.error}
         </Message>
       ) : (
+        <>
         <Table striped bordered hover responsive className='table-sm'>
           <thead>
             <tr>
@@ -67,12 +68,13 @@ export const OrderAdminPage = () => {
             ))}
           </tbody>
         </Table>
-      )}
-      <PaginationComponent
-            // pages={data.pages}
-            // page={data.page}
+        <PaginationComponent
+            pages={data.pages}
+            page={data.page}
             isAdmin={true}
           />
+      </>
+      )}
     </>
   )
 }
