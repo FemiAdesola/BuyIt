@@ -10,7 +10,8 @@
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run app\" \"npm run client\"",
     "data:import": "node backend/seederData.js ",
-    "data:destroy": "node backend/seederData.js -d "
+    "data:destroy": "node backend/seederData.js -d ",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "Femi Adesola",
   "license": "MIT",
