@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useLogoutMutation } from "../Redux/slice/userApiSlice";
 import { logout } from "../Redux/slice/authSlice";
 import logo from "../Assets/logo.png";
+import Search from "./Search";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -44,6 +45,7 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
+            <Search />
               <LinkContainer to="/cart">
                 <Nav.Link>
                   <FaShoppingCart /> Cart
