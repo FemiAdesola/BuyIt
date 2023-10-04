@@ -9,6 +9,7 @@ import { useLogoutMutation } from "../../Redux/slice/userApiSlice";
 import { logout } from "../../Redux/slice/authSlice";
 import logo from "../../Assets/logo.png";
 import Search from "../Search";
+import { resetCart } from "../../Redux/slice/cartSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const Header = () => {
     try {
       await logoutMutation().unwrap();
       dispatch(logout());
+      dispatch(resetCart());
       navigate("/login");
     } catch (error) {
       console.error(error);

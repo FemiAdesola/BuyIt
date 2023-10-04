@@ -106,7 +106,7 @@ const OrderScreen = () => {
   return isLoading ? (
     <Loader />
   ) : error ? (
-    <Message variant="danger">{error.data.message}</Message>
+    <Message variant="danger">{error?.data?.message || error.error}</Message>
   ) : (
     <>
      {userData && userData.isAdmin ? (
