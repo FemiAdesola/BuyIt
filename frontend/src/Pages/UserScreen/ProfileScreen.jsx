@@ -5,11 +5,11 @@ import { toast } from "react-toastify";
 import { LinkContainer } from "react-router-bootstrap";
 import { FaTimes } from "react-icons/fa";
 
-import Loader from "../Components/Loader";
-import { useProfileMutation } from "../Redux/slice/userApiSlice";
-import { setCredentials } from "../Redux/slice/authSlice";
-import { useGetMyOrdersQuery } from "../Redux/slice/orderApiSlice";
-import Message from "../Components/Message";
+import Loader from "../../Components/Loader";
+import { useProfileMutation } from "../../Redux/slice/userApiSlice";
+import { setCredentials } from "../../Redux/slice/authSlice";
+import { useGetMyOrdersQuery } from "../../Redux/slice/orderApiSlice";
+import Message from "../../Components/Message";
 
 const ProfileScreen = () => {
   const dispatch = useDispatch();

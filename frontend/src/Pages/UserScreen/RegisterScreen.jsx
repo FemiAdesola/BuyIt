@@ -4,10 +4,10 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
-import Loader from "../Components/Loader";
-import FormContainer from "../Components/FormContainer";
-import { useRegisterMutation } from "../Redux/slice/userApiSlice";
-import { setCredentials } from "../Redux/slice/authSlice";
+import Loader from "../../Components/Loader";
+import FormContainer from "../../Components/FormContainer";
+import { useRegisterMutation } from "../../Redux/slice/userApiSlice";
+import { setCredentials } from "../../Redux/slice/authSlice";
 
 const RegisterScreen = () => {
   const dispatch = useDispatch();

@@ -5,10 +5,10 @@ import LinkContainer from "react-router-bootstrap/LinkContainer";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { useLogoutMutation } from "../Redux/slice/userApiSlice";
-import { logout } from "../Redux/slice/authSlice";
-import logo from "../Assets/logo.png";
-import Search from "./Search";
+import { useLogoutMutation } from "../../Redux/slice/userApiSlice";
+import { logout } from "../../Redux/slice/authSlice";
+import logo from "../../Assets/logo.png";
+import Search from "../Search";
 
 const Header = () => {
   const dispatch = useDispatch();
