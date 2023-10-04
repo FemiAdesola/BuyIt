@@ -30,3 +30,26 @@
     + Redux toolkit
     + jwt-decode
     + React Stripe
+
+## Getting started
+### Frontend (UI) page
+
+![Front](./img/Front.png)
+
+### Product details
+![Productdetails](./img/SingleProduct.png)
+
+### Cart page
+
+![Cartpage](./img/Cart.png)
+### Order Summary page
+
+
+![usersummary](./img/OrderSummary.png)
+
+### Payment  page
+
+![Payment](./img/PaymentMethod.png)
+
+
+

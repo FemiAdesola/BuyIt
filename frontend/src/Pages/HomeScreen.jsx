@@ -10,7 +10,6 @@ import PaginationComponent from "../Components/PaginationComponent";
 import ProductCarousel from "../Components/Product/ProductCarousel";
 import Meta from "../Components/Meta";
 
-
 const HomeScreen = () => {
   const {pageNumber, keyword} = useParams();
   const { data, isLoading, error } = useGetAllProductsQuery({keyword, pageNumber});

@@ -7,14 +7,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import Header from './Components/Layout/Header';
 import Footer from './Components/Layout/Footer';
 
-
-
 const App = () => {
   return (
     <>
       <Header />
-      <main className="py-3">
-        <Container>
+      <main className="py-3 mt-5">
+        <Container className="mt-4">
           {/* <h1>Welcome to buyIt shopping center</h1> */}
         <Outlet/>
         </Container>
