@@ -67,6 +67,12 @@ table th {
 }
 
 
+@media (min-width: 576px) {
+  .carousel-image{
+    height: 600px !important;
+  }
+}
+
 /* Footer */
 #footer {
   color: #fff;

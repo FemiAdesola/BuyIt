@@ -104,10 +104,21 @@ const deleteProduct = asynchronousHandler(async (req, res) => {
   }
 });
 
+
+// @desc    Get top rated products
+// @route   GET /api/v1/products/top
+// @access  Public
+const getProductsAtTop = asynchronousHandler(async (req, res) => {
+  const products = await Product.find({}).sort({ rating: -1 }).limit(4);
+
+  res.status(200).json(products);
+});
+
 export {
   getAllProducts,
   getProductById,
   createProduct,
   updateProduct,
   deleteProduct,
+  getProductsAtTop
 };

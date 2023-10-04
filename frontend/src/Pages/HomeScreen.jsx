@@ -7,6 +7,7 @@ import { useGetAllProductsQuery } from "../Redux/slice/productsApiSlice.js";
 import Loader from "../Components/Loader";
 import Message from "../Components/Message";
 import PaginationComponent from "../Components/PaginationComponent";
+import ProductCarousel from "../Components/Product/ProductCarousel";
 
 
 const HomeScreen = () => {
@@ -14,7 +15,11 @@ const HomeScreen = () => {
   const { data, isLoading, error } = useGetAllProductsQuery({keyword, pageNumber});
   return (
     <>
-    {keyword && (<Link to="/" className="btn btn-light mb-2">Go Back</Link>)}
+    {!keyword ? (
+    <ProductCarousel/>
+    ) : (
+      <Link to="/" className="btn btn-light mb-2">Go Back</Link>
+      )}
       {isLoading ? (
         <Loader />
       ) : error ? (
