@@ -11,7 +11,7 @@ const getAllProducts = asynchronousHandler(async (req, res) => {
 
   // for searching keywords
   const keyword = req.query.keyword
-    ? { title: { $regex: req.query.keyword, $options: "i" } }
+    ? { title: { $regex: req.query.keyword, $options: "i" }, }
     : {};
 // 
   const count = await Product.countDocuments({...keyword}); 
