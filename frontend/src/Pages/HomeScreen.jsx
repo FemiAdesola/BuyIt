@@ -1,5 +1,13 @@
-import { Row, Col } from "react-bootstrap";
-import { useParams, Link } from "react-router-dom";
+import React from "react";
+import {
+  Row,
+  Col,
+  Container,
+  Card,
+  ListGroup,
+  FormSelect,
+} from "react-bootstrap";
+import { useParams, Link} from "react-router-dom";
 
 // import products from '../products';
 import ProductCard from "../Components/Product/ProductCard";
@@ -11,34 +19,81 @@ import ProductCarousel from "../Components/Product/ProductCarousel";
 import Meta from "../Components/Meta";
 
 const HomeScreen = () => {
-  const {pageNumber, keyword} = useParams();
-  const { data, isLoading, error } = useGetAllProductsQuery({keyword, pageNumber});
+  const { pageNumber, keyword } = useParams();
+  
+  const { data, isLoading, error } = useGetAllProductsQuery({
+    keyword,
+    pageNumber,
+  });
+
   return (
     <>
-    {!keyword ? (
-    <ProductCarousel/>
-    ) : (
-      <Link to="/" className="btn btn-light mb-2">Go Back</Link>
+      {!keyword ? (
+        <ProductCarousel />
+      ) : (
+        <Link to="/" className="btn btn-light mb-2">
+          Go Back
+        </Link>
       )}
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <Message variant='danger'>{error?.data?.message || error.error}</Message>
+        <Message variant="danger">
+          {error?.data?.message || error.error}
+        </Message>
       ) : (
         <>
-        <Meta title="Products"/>
+          <Meta title="Products" />
           <h1>Latest Products</h1>
-          <Row>
-            {data.products.map((product) => (
-              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                <ProductCard product={product} />
+          <Container>
+            <Row>
+              <Col lg={3}>
+                <Card className="shadow p-3">
+                  <ListGroup variant="flush">
+                    <ListGroup.Item>
+                      <h4 className="mb-2">Category</h4>
+                      <FormSelect
+                        defaultValue={"All"}
+                        onChange={(e) => {
+                          if (e.target.value === "All") {
+                            // reset();
+                          } else {
+                            // handleCategoryClick(e.target.value);
+                          }
+                        }}
+                      >
+                        <option value="All">All</option>
+                        All
+                        {Array.isArray(data.products)
+                          ? data.products.map((product) => (
+                              <option
+                                value={product.category.toLowerCase()}
+                                key={product.id}
+                              >
+                                {product.category.toLowerCase()}
+                              </option>
+                            ))
+                          : null}
+                      </FormSelect>
+                    </ListGroup.Item>
+                  </ListGroup>
+                </Card>
               </Col>
-            ))}
-          </Row>
+              <Col lg={9}>
+                <Row>
+                  {data.products.map((product) => (
+                    <Col key={product._id} sm={12} md={6} lg={5} xl={4}>
+                      <ProductCard product={product} />
+                    </Col>
+                  ))}
+                </Row>
+              </Col>
+            </Row>
+          </Container>
           <PaginationComponent
             pages={data.pages}
             page={data.page}
-            keyword={ keyword ? keyword : ""}
+            keyword={keyword ? keyword : ""}
           />
         </>
       )}

@@ -14,7 +14,7 @@ export const OrderAdminPage = () => {
   const {pageNumber} = useParams();
     const { data, isLoading, refetch,error } = useGetAllOrdersQuery({pageNumber});
 
-    const [deleteOrder, { isLoading: loadingDelete }] =
+    const [deleteOrder] =
     useDeleteOrderMutation();
     // For deleting the order
     const deleteOrderHandler = async (id) => {
