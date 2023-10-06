@@ -150,6 +150,20 @@ const getAllOrders = asynchronousHandler(async (req, res) => {
     .populate("user", "id name");
   res.json({ orders, page, pages: Math.ceil(count / pageSize) });
 });
+// @desc    Delete a product
+// @route   DELETE /api/v1/orders/:id
+// @access  Private/Admin
+const deleteOrder = asynchronousHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id);
+
+  if (order) {
+    await Order.deleteOne({ _id: order._id });
+    res.status(200).json({ message: "Order removed" });
+  } else {
+    res.status(404);
+    throw new Error("Order not found");
+  }
+});
 
 export {
   addOrderItems,
@@ -158,4 +172,5 @@ export {
   updateOrderToPaid,
   updateOrderToDelivered,
   getAllOrders,
+  deleteOrder
 };
