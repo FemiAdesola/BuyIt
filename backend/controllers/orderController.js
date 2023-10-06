@@ -1,7 +1,7 @@
 import asynchronousHandler from "../middleware/asynchronousHandler.js";
 import Order from "../models/orderModel.js";
 import Product from "../models/productModel.js";
-import { forCalculatingPrice } from "../utils/ForCalculatingPrice.js";
+import { forCalculatingPrice } from "../utils/forCalculatingPrice.js";
 import {
   verifyPayPalPayment,
   checkIfNewTransaction,
