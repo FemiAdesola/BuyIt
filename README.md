@@ -14,6 +14,10 @@
 - [Installation](#installation)
 - [Getting started](#getting-started)
 
+
+## Introduction
+This project is a full-stack project built with NodeJS for the backend and the React, Redux toolkit for the frontend, and MongoDB used for the database, while PayPal used as a means of transaction.
+This project allowed me to get more detailed about online transactions, where authorized admin controls everything at the backend and has more access to control what is happening on the clients' side than regular users.
 ## Technologies
 - Backend
     + MongoDB
@@ -24,13 +28,14 @@
     + bcryptjs
     + jsonwebtoken
 - Frontend
-    + RectJS
+    + ReactJS
     + React-bootstrap(for design and styling)
     + Redux
     + react-router-dom
     + Redux toolkit
     + jwt-decode
     + React Stripe
+    + Paypal
 
 ## Getting started
 ### Frontend (UI) page
