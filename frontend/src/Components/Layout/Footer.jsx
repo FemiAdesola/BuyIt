@@ -39,11 +39,11 @@ const Footer = () => {
                   </li>
                   <li>
                     <i className="bx bx-chevron-right" />{" "}
-                    <a href="/movies/create">Create movies</a>
+                    <a href="/">Products</a>
                   </li>
                   <li>
                     <i className="bx bx-chevron-right" />{" "}
-                    <a href="/categories">Services</a>
+                    <a href="/">Services</a>
                   </li>
                   <li>
                     <i className="bx bx-chevron-right" />{" "}
