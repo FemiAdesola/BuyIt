@@ -47,7 +47,7 @@ const HomeScreen = () => {
           <h1>Latest Products</h1>
           <Container>
             <Row>
-              <Col lg={3}>
+              {/* <Col lg={3}>
                 <Card className="shadow p-3">
                   <ListGroup variant="flush">
                     <ListGroup.Item>
@@ -78,8 +78,8 @@ const HomeScreen = () => {
                     </ListGroup.Item>
                   </ListGroup>
                 </Card>
-              </Col>
-              <Col lg={9}>
+              </Col> */}
+              <Col lg={10}>
                 <Row>
                   {data.products.map((product) => (
                     <Col key={product._id} sm={12} md={6} lg={5} xl={4}>
