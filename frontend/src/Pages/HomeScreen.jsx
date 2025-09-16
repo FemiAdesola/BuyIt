@@ -47,6 +47,9 @@ const HomeScreen = () => {
           <h1>Latest Products</h1>
           <Container>
             <Row>
+            <Col lg={3}>
+              
+            </Col>
               {/* <Col lg={3}>
                 <Card className="shadow p-3">
                   <ListGroup variant="flush">
