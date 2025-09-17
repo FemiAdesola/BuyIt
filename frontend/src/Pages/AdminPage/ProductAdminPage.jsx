@@ -117,6 +117,7 @@ const ProductAdminPage = () => {
             pages={data.pages}
             page={data.page}
             isAdmin={true}
+            isOrderList={false}
           />
         </>
       )}

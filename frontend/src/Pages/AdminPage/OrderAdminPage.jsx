@@ -96,6 +96,7 @@ export const OrderAdminPage = () => {
             pages={data.pages}
             page={data.page}
             isAdmin={true}
+            isOrderList={true}
           />
       </>
       )}
