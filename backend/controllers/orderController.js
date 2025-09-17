@@ -138,7 +138,7 @@ const updateOrderToDelivered = asynchronousHandler(async (req, res) => {
 // @access  Private/Admin
 const getAllOrders = asynchronousHandler(async (req, res) => {
   // for pagination purposes
-  const pageSize = process.env.PAGINATION_LIMIT_PAGE_SIZE_v2;
+  const pageSize = process.env.PAGINATION_LIMIT_PAGE_SIZE;
   const page = Number(req.query.pageNumber) || 1;
   const count = await Order.countDocuments();
 
